@@ -1,0 +1,142 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+.carousel-item {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease !important;
+}
+
+header {
+    background-color: rgb(30, 30, 30)!important;
+    font-weight: bold;
+    z-index: 1000;
+    top: 0;
+    position: relative;
+}
+
+.navbar-nav .nav-item + .nav-item {
+    margin-left: 15px;
+}
+.dropdown, .dropleft, .dropright, .dropup {
+    position: relative;
+    top: -10px;
+}
+.navbar-light .navbar-text {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.navbar-nav .nav-item .nav-link {
+    font-family: 'Arial', sans-serif;
+    color: rgba(255, 255, 255, 0.8)!important;
+    position: relative;
+    padding: 5px 10px;
+    transition: color 0.3s ease, padding 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link:focus {
+    color: #e4af28 !important;
+    padding: 5px 15px;
+    transform: translateY(-2px);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.navbar-light .navbar-brand {
+    color: rgb(255, 255, 255) !important;
+    font-variant-caps: petite-caps;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.profile-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.navbar-light .navbar-brand:hover {
+    color: #ffdd00 !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.navbar-toggler {
+    border: none;
+    background-color: transparent;
+}
+.bg-light{
+    background-color: rgb(30, 30, 30)!important;
+}
+
+.profile-section {
+    margin-top: 30px;
+}
+
+.profile-card {
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.profile-img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #fff;
+}
+
+.profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffdd00;
+    margin-top: 15px;
+}
+
+.profile-role {
+    font-size: 18px;
+    color: #ffdd00;
+}
+
+.profile-details {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.profile-details h3 {
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.profile-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.profile-details li {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.profile-details strong {
+    color: #343a40;
+}
+
+footer {
+    background-color: transparent;
+    padding: 20px;
+    text-align: center;
+    color: #6c757d;
+}

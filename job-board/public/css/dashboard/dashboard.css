@@ -1,0 +1,298 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+.carousel-item {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease !important;
+}
+
+header {
+    background-color: rgb(30, 30, 30);
+    font-weight: bold;
+    z-index: 1000;
+    top: 0;
+    position: relative;
+}
+
+.navbar-nav .nav-item + .nav-item {
+    margin-left: 15px;
+}
+.dropdown, .dropleft, .dropright, .dropup {
+    position: relative;
+    top: -10px;
+}
+.navbar-light .navbar-text {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.navbar-nav .nav-item .nav-link {
+    font-family: 'Arial', sans-serif;
+    color: rgba(255, 255, 255, 0.8)!important;
+    position: relative;
+    padding: 5px 10px;
+    transition: color 0.3s ease, padding 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link:focus {
+    color: #e4af28 !important;
+    padding: 5px 15px;
+    transform: translateY(-2px);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.navbar-light .navbar-brand {
+    color: rgb(255, 255, 255) !important;
+    font-variant-caps: petite-caps;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.profile-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.navbar-light .navbar-brand:hover {
+    color: #ffdd00 !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+}
+.navbar-brand img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+.nav-link img{
+    border: 3px solid #fff;
+}
+
+.navbar-toggler {
+    border: none;
+    background-color: transparent;
+}
+
+#sidebar {
+    background-color: #0b0d10;
+    height: 100vh;
+    padding: 20px;
+    font-size: 14px;
+    max-width: 250px;
+}
+
+
+#sidebar .navbar-text {
+    font-size: 12px;
+    color: white;
+    background-color: #2980b9;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    margin-top: 5px;
+    
+}
+
+.sidebar .nav-link {
+    color: #7187de !important;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 4px;
+}
+
+.sidebar .nav-link:hover {
+    color: #fbc531;
+    background-color: #273c75;
+}
+
+.bg-dark {
+    background-color:#607d8b70 !important;
+    padding: 20px;
+    height: 100%;
+}
+.nav-links .nav-link {
+    color: #000000 !important;
+    font-size: 16px;
+    padding: 10px;
+    background-color: #ffffff; 
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start; 
+    min-height: 60px; 
+   
+}
+.nav-links li{
+    list-style: none;
+}
+
+.nav-links .nav-link i {
+    font-size: 20px; /* حجم الأيقونة */
+    color: #fbc531; /* لون الأيقونة */
+    margin-right: 15px; /* مسافة بين الأيقونة والنص */
+}
+
+.nav-links .nav-link:hover {
+    color: #7187de !important;
+    background-color: #273c75;
+}
+
+.nav-links .nav-item {
+    margin-bottom: 10px; /* مسافة بين العناصر */
+}
+
+
+#main-content {
+    padding: 20px;
+    font-size: 14px;
+    background-color: #f5f6fa;
+}
+
+.col-md-8 {
+    flex: 1;
+    max-width: 100%;
+}
+
+.dashboard-summary {
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 250px;
+    height: 100px;
+    box-sizing: border-box; /* لضمان عدم تجاوز محتويات البطاقة */
+}
+
+.interactive-card {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.interactive-card:hover {
+    background-color: #f5f6fa;
+    transform: scale(1.02);
+}
+
+.icon-container {
+    font-size: 1.5rem;
+    color: #2980b9;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.card-icon {
+    font-size: 24px;
+    color: #3498db;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.info-container {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1; /* لتوزيع المساحة المتبقية بشكل مناسب */
+}
+
+
+.info-container .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+
+.info-container .card-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2f3640;
+}
+
+.card-title {
+    font-size: 12px;
+    color: #2980b9;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 20px; /* تقليل الحجم قليلاً لتناسب الشاشات الأصغر */
+    margin-top: 10px;
+    font-weight: 500;
+    color: #D93025;
+}
+
+@media (max-width: 867px) {
+    .card {
+        flex-direction: column;
+        align-items: flex-start; /* محاذاة النصوص إلى اليسار */
+        height: auto; /* تعديل الارتفاع ليكون مرنًا */
+        text-align: left; /* محاذاة النصوص إلى اليسار */
+        font-size: 14px;
+    }
+
+    .icon-container {
+        margin-bottom: 10px; /* إضافة مسافة أسفل الأيقونة */
+    }
+    
+    .info-container {
+        align-items: flex-start; /* محاذاة العناصر الداخلية إلى اليسار */
+        text-align: left; /* محاذاة النصوص إلى اليسار */
+    }
+    
+ .card-title, .card-number, .card-text {
+        font-size: 10px; /* تقليل حجم النصوص للشاشات الصغيرة */
+    }
+
+    .info-container  .card-text {
+        font-size: 18px; /* حجم أصغر للنصوص تحت العنوان */
+    }
+}
+
+
+.recent-activities ul, .notifications-summary ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.recent-activities li, .notifications-summary li {
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+
+h2 {
+    font-size: 20px;
+    color: #2980b9;
+    padding-bottom: 5px;
+}
+
+
+
+
+
+

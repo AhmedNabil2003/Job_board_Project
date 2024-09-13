@@ -1,0 +1,168 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+.carousel-item {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease !important;
+}
+
+header {
+    background-color: rgb(30, 30, 30);
+    font-weight: bold;
+    z-index: 1000;
+    top: 0;
+    position: relative;
+}
+.bg-light{
+    background-color: rgb(30, 30, 30)!important;
+}
+.navbar-brand img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-bottom: 15px;
+
+}
+
+
+.navbar-nav .nav-item + .nav-item {
+    margin-left: 15px;
+}
+.dropdown, .dropleft, .dropright, .dropup {
+    position: relative;
+    top: -10px;
+}
+.navbar-light .navbar-text {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.navbar-nav .nav-item .nav-link {
+    font-family: 'Arial', sans-serif;
+    color: rgba(255, 255, 255, 0.8)!important;
+    position: relative;
+    padding: 5px 10px;
+    transition: color 0.3s ease, padding 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link:focus {
+    color: #e4af28 !important;
+    padding: 5px 15px;
+    transform: translateY(-2px);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.navbar-light .navbar-brand {
+    color: rgb(255, 255, 255) !important;
+    font-variant-caps: petite-caps;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.profile-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.navbar-light .navbar-brand:hover {
+    color: #ffdd00 !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.navbar-toggler {
+    border: none;
+    background-color: transparent;
+}
+.nav-link img{
+    border: 3px solid #fff;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+
+/* Custom CSS for layout and styling */
+.container {
+    max-width: 900px;
+}
+.profile-edit-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.profile-image-section {
+    background-color: lavender;
+    flex: 1;
+    text-align: center;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+
+}
+.profile-image-section img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 3px solid #fff;
+}
+.profile-image-section .custom-file-input {
+    margin-top: 10px;
+    
+}
+.custom-file .btn{
+    font-weight: bold;
+    color: #fff5e2;
+    background-color: #4fac04c7;
+    border-radius: 5px;
+}
+.custom-file .btn:hover{
+    background-color:#fff5e2;
+    color: #2b2b2b;
+    
+}
+
+.profile-info-section {
+    background-color: #f1f1f1;
+    flex: 2;
+    padding: 20px;
+    margin-left: 30px;
+}
+.form-group label {
+    font-weight: bold;
+}
+.mt-2, .my-2 {
+    font-weight: bold;
+    font-size: larger;
+    color: #2b2b2b;
+    margin-top: .5rem !important
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-control-file {
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+}

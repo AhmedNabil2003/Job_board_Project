@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Manage Users</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/admin/manage_users.css') }}">
+</head>
+<body>
+    
+
+   <!-- Header -->
+   <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Job Board</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('jobs.index') }}">Jobs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/about') }}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/contact') }}">Contact Us</a>
+                    </li>
+                    @auth
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user"></i> {{ Auth::user()->name }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
+                            <a class="dropdown-item" href="{{ route('profile.edit', ['id' => Auth::id()]) }}">Edit Profile</a>
+                            <form action="{{ route('logout') }}" method="POST" class="dropdown-item">
+                                @csrf
+                                <button type="submit" class="dropdown-item">Logout</button>
+                            </form>
+                        </div>
+                    </li>
+                    @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    @endauth
+                </ul>
+            </div>
+        </nav>
+    </header>
+    @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+<div class="container mt-5">
+    <h1 class="text-center">Manage Users</h1>
+    
+    <!-- Search bar -->
+    <div class="row mb-3">
+    <div class="col-12">
+        <input type="text" class="form-control" id="searchUser" placeholder="Search for users...">
+    </div>
+</div>
+
+<!-- Users Table -->
+<div class="row">
+    <div class="col-12">
+        <table class="table table-hover table-striped" id="usersTable">
+            <thead class="table-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                    <tr>
+
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->role }}</td>
+                        <td>
+                            @if ($user->is_active)
+                                <span class="badge badge-success">Active</span>
+                            @else
+                                <span class="badge badge-danger">Inactive</span>
+                            @endif
+                        </td>
+                        <td>
+                            <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal-{{ $user->id }}">Edit</button>
+                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#sendNotificationModal-{{ $user->id }}">Notify</button>
+                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal-{{ $user->id }}">Delete</button>
+                            @if ($user->is_active)
+                                <form action="{{ route('admin.deactivate_user', $user->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit" class="btn btn-warning btn-sm">Deactivate</button>
+                                </form>
+                            @else
+                                <form action="{{ route('admin.activate_user', $user->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit" class="btn btn-success btn-sm">Activate</button>
+                                </form>
+                            @endif
+                        </td>
+                    </tr>
+
+
+            <!-- Edit User Modal -->
+            <div class="modal fade" id="editUserModal-{{ $user->id }}" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ route('admin.update_user', $user->id) }}" method="POST">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="userName" class="form-label">Name</label>
+                                    <input type="text" class="form-control" name="name" value="{{ $user->name }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="userEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" name="email" value="{{ $user->email }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="userRole" class="form-label">Role</label>
+                                    <select class="form-select" name="role">
+                                        <option value="Employer" {{ $user->role == 'Employer' ? 'selected' : '' }}>Employer</option>
+                                        <option value="Candidate" {{ $user->role == 'Candidate' ? 'selected' : '' }}>Candidate</option>
+                                        <option value="Admin" {{ $user->role == 'Admin' ? 'selected' : '' }}>Admin</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Send Notification Modal -->
+            <div class="modal fade" id="sendNotificationModal-{{ $user->id }}" tabindex="-1" aria-labelledby="sendNotificationModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="sendNotificationModalLabel">Send Notification</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ route('admin.notify_user', $user->id) }}" method="POST">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="notificationMessage" class="form-label">Message</label>
+                                    <textarea class="form-control" name="message" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send Notification</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Confirm Delete Modal -->
+            <div class="modal fade" id="confirmDeleteModal-{{ $user->id }}" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Deletion</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete {{ $user->name }}?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <form action="{{ route('admin.delete_user', $user->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </tbody>
+</table>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script >
+  $(document).ready(function() {
+    $('#searchUser').on('keyup', function() {
+        var searchTerm = $(this).val().toLowerCase();
+        $('#usersTable tbody tr').each(function() {
+            var row = $(this);
+            var id = row.find('td:nth-child(1)').text().toLowerCase();  // عمود Id
+            var name = row.find('td:nth-child(2)').text().toLowerCase(); // عمود Name
+            
+            // تحقق مما إذا كان المصطلح البحث موجودًا في Id أو Name
+            if (id.indexOf(searchTerm) !== -1 || name.indexOf(searchTerm) !== -1 || searchTerm === '') {
+                row.show();
+            } else {
+                row.hide();
+            }
+        });
+    });
+});
+
+</script>
+</body>
+</html>
