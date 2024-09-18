@@ -112,9 +112,6 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card">
-                    @if (Auth::user()->profile && Auth::user()->profile->profile_image)
-                        <img src="{{ asset('storage/profile_pictures/' . Auth::user()->profile->profile_image) }}" alt="Profile Picture" class="profile-img img-fluid rounded-circle" style="width: 40px; height: 40px; object-fit: cover; margin-right: 10px;">
-                    @endif
                          <div class="card-body">
                          <h5 class="card-title">John Doe</h5>
                          <p class="card-text">Founder & CEO</p>
@@ -123,9 +120,6 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        @if (Auth::user()->profile && Auth::user()->profile->profile_image)
-                        <img src="{{ asset('storage/profile_pictures/' . Auth::user()->profile->profile_image) }}" alt="Profile Picture" class="profile-img img-fluid rounded-circle" style="width: 40px; height: 40px; object-fit: cover; margin-right: 10px;">
-                        @endif
                         <div class="card-body">
                             <h5 class="card-title">Jane Smith</h5>
                             <p class="card-text">CTO</p>
@@ -134,9 +128,6 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                    @if (Auth::user()->profile && Auth::user()->profile->profile_image)
-                        <img src="{{ asset('storage/profile_pictures/' . Auth::user()->profile->profile_image) }}" alt="Profile Picture" class="profile-img img-fluid rounded-circle" style="width: 40px; height: 40px; object-fit: cover; margin-right: 10px;">
-                        @endif
                         <div class="card-body">
                             <h5 class="card-title">Bob Johnson</h5>
                             <p class="card-text">COO</p>
