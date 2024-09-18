@@ -8,58 +8,69 @@
     <link rel="stylesheet" href="{{ asset('css/profile/profile.css') }}">
 </head>
 <body>
+    @php
+    $settings = App\Models\Setting::first();
+    @endphp
     <!-- Header -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="/">
-                <img src="{{ asset('images/job_logo.jpg') }}" alt="Job Board Logo" width="50" height="60"> <!-- Logo -->
-                Job Board
+        @if(isset($settings))
+            @if(!is_null($settings->site_logo))
+                <img src="{{ asset('storage/siteLogo/' . $settings->site_logo) }}" alt="{{ $settings->site_name ?? 'Logo' }}" width="50" height="60">
+                @endif
+                @if(!is_null($settings->site_name))
+                    <span>{{ $settings->site_name }}</span>
+                @endif
+            @endif
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('jobs.index') }}">Jobs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/about') }}">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/contact') }}">Contact Us</a>
-                    </li>
-                    @auth
-                    <li class="nav-item">
-                        <div class="ml-auto">
-                            <div class="dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @if (Auth::user()->profile && Auth::user()->profile->profile_image)
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('jobs.index') }}">Jobs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/about') }}">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/contact') }}">Contact Us</a>
+                </li>
+                @auth
+                <li class="nav-item">
+                    <div class="ml-auto">
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @if (Auth::user()->profile && Auth::user()->profile->profile_image)
                                 <img src="{{ asset('storage/profile_pictures/'  . Auth::user()->profile->profile_image) }}" alt="Profile Picture" class="profile-img img-fluid rounded-circle" style="width: 40px; height: 40px; object-fit: cover; margin-right: 10px;">
-                                @endif
-                                    <span class="navbar-text">{{ Auth::user()->name }}</span>
-                                </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
-                            <a class="dropdown-item" href="{{ route('profile.edit', ['id' => Auth::id()]) }}">Edit Profile</a>
-                            <form action="{{ route('logout') }}" method="POST" class="dropdown-item">
-                                @csrf
-                                <button type="submit" class="dropdown-item">Logout</button>
-                            </form>
+                                <span class="navbar-text">{{ Auth::user()->name }}</span>
+                            @endif
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
+                                <a class="dropdown-item" href="{{ route('profile.edit', ['id' => Auth::id()]) }}">Edit Profile</a>
+                                <form action="{{ route('logout') }}" method="POST" class="dropdown-item">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">Logout</button>
+                                </form>
+                            </div>
                         </div>
-                    </li>
-                    @else
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Login</a>
-                    </li>
-                    @endauth
-                </ul>
-            </div>
-        </nav>
-    </header>
+                    </div>
+                </li>
+                @else
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                @endauth
+            </ul>
+        </div>
+    </nav>
+</header>
 
     <!-- Profile Section -->
     <section class="profile-section container mt-5">
@@ -78,11 +89,13 @@
                     <h3>Profile Details</h3>
                     <ul class="list-unstyled">
                         <li><strong>Email:</strong> {{ $user->email }}</li>
-                        <li><strong>Joined:</strong> {{ $user->created_at->format('F j, Y') }}</li>
                         <li><strong>Role:</strong> {{ $user->role }}</li>
                         @if (Auth::user()->profile && Auth::user()->profile->profile_image)
                         <li><strong>bio:</strong> {{  $user->profile->bio}}</li>
                         @endif
+                        <li><strong>Company Name:</strong> {{ $user->profile->company_name }}</li>
+                        <li><strong>Location:</strong> {{ $user->profile->location }}</li>
+                        <li><strong>Joined:</strong> {{ $user->created_at->format('F j, Y') }}</li>
                         <!-- Add more details as needed -->
                     </ul>
                 </div>

@@ -1,36 +1,36 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\JobListing;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class JobController extends Controller
 {
-    // عرض قائمة الوظائف
-    public function index()
+  
+    public function index(Request $request)
     {
         ini_set('max_execution_time', 3600);
-        $jobs = JobListing::with('category')->get(); // استخدام with لتحميل العلاقات
+        $jobs = JobListing::where('status', 'Active')->get();
         return view('jobs.index', compact('jobs'));
+      
     }
 
-    // عرض تفاصيل وظيفة معينة
     public function details($id)
     {
         $job = JobListing::findOrFail($id);
         return view('jobs.details', compact('job'));
     }
 
-    // عرض نموذج لإنشاء وظيفة جديدة
+
     public function create()
     {
         $categories = Category::all();
         return view('jobs.create', compact('categories'));
     }
 
-    // تخزين وظيفة جديدة
     public function store(Request $request)
     {
         $request->validate([
@@ -51,7 +51,6 @@ class JobController extends Controller
         return redirect()->route('jobs.index')->with('success', 'Job created successfully.');
     }
 
-    // عرض نموذج لتعديل وظيفة معينة
     public function edit($id)
     {
         $job = JobListing::findOrFail($id);
@@ -59,7 +58,7 @@ class JobController extends Controller
         return view('jobs.edit', compact('job', 'categories'));
     }
 
-    // تحديث وظيفة معينة
+ 
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -74,19 +73,65 @@ class JobController extends Controller
             'status' => 'required|string|in:active,closed',
             'category_id' => 'nullable|exists:categories,id',
         ]);
-
-        $job = JobListing::findOrFail($id);
-        $job->update($request->all());
-
-        return redirect()->route('jobs.index')->with('success', 'Job updated successfully.');
+        
+        $job =  JobListing::find($id);
+        $job->update ( $request->all());
+        $job->save();
+        return redirect()->route('admin.manage_jobs')->with('success', 'job updated successfully');
     }
 
-    // حذف وظيفة معينة
     public function destroy($id)
     {
         $job = JobListing::findOrFail($id);
         $job->delete();
 
-        return redirect()->route('jobs.index')->with('success', 'Job deleted successfully.');
+        return redirect()->route('admin.manage_jobs')->with('success', 'Job deleted successfully.');
     }
+
+    
+    public function saveJob(Request $request)
+{
+    $jobId = $request->input('job_id');
+    $userId = auth()->id();
+
+    try {
+        $savedJob = DB::table('saved_jobs')->where('user_id', $userId)->where('job_id', $jobId)->first();
+
+        if ($savedJob) {
+            DB::table('saved_jobs')->where('user_id', $userId)->where('job_id', $jobId)->delete();
+        } else {
+            DB::table('saved_jobs')->insert([
+                'user_id' => $userId,
+                'job_id' => $jobId,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
+
+        return response()->json(['success' => true]);
+    } catch (\Exception $e) {
+        \Log::error('Error saving job: ' . $e->getMessage());
+        return response()->json(['success' => false, 'message' => 'An error occurred while saving the job.']);
+    }
+}
+    
+public function savedJobs()
+{
+    $userId = auth()->id();
+    $jobs = JobListing::whereIn('id', function($query) use ($userId) {
+        $query->select('job_id')
+              ->from('saved_jobs')
+              ->where('user_id', $userId);
+    })->get();
+
+    return view('candidates.saved_jobs', compact('jobs'));
+}
+public function unsaveJob($jobId)
+{
+    $user = Auth::user();
+    $user->savedJobs()->detach($jobId);
+    return redirect()->back()->with('success', 'Job removed from saved jobs.');
+}
+
+
 }

@@ -1,0 +1,318 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+.carousel-item {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease !important;
+}
+
+header {
+    background-color: rgb(30, 30, 30);
+    font-weight: bold;
+    z-index: 1000;
+    top: 0;
+    height: 50px;
+    position: relative;
+}
+.navbar{
+    font-size: small;
+    bottom: 10px;
+}
+.navbar-nav .nav-item + .nav-item {
+    margin-left: 15px;
+}
+.dropdown, .dropleft, .dropright, .dropup {
+    position: relative;
+    top: -10px;
+}
+.navbar-light .navbar-text {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.navbar-nav .nav-item .nav-link {
+    font-family: 'Arial', sans-serif;
+    color: rgba(255, 255, 255, 0.8)!important;
+    position: relative;
+    padding: 5px 10px;
+    transition: color 0.3s ease, padding 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link:focus {
+    color: #e4af28 !important;
+    padding: 5px 15px;
+    transform: translateY(-2px);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+div .navbar-collapse{
+    justify-content: end; 
+}
+
+.navbar-light .navbar-brand {
+    color: rgb(255, 255, 255) !important;
+    font-variant-caps: petite-caps;
+    margin-bottom: 20px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.profile-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.navbar-light .navbar-brand:hover {
+    color: #ffdd00 !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+}
+.navbar-brand img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+ 
+}
+.nav-link img{
+    border: 3px solid #fff;
+}
+
+.navbar-toggler {
+    border: none; 
+    background-color: transparent; 
+}
+.navbar-light .navbar-toggler {
+    color: rgba(255, 255, 255, 0.5); 
+    border: none !important;
+}
+.navbar-toggler:focus {
+    outline:none; 
+    box-shadow: none; 
+}
+.navbar-toggler:focus :hover{
+    outline-color:rgb(18, 83, 168);  ;
+}
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E")!important; 
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background-color: #4b4a4a; 
+}
+
+.navbar-collapse {
+    text-transform: uppercase;  
+    justify-content: end;  
+    text-align: end;
+}
+.nav-link img{
+    border: 3px solid #fff;
+}
+
+.profile-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.collapse.show {
+    transition: all 0.4s ease;
+    background-color: #23517b;
+}
+
+.separator {
+    margin: 0 10px; 
+    font-size: 15px;
+    color: #6c757d; 
+}
+.btn-lg {
+    margin-bottom: 100px!important;
+}
+.btn-light {
+    color: #ffffff!important;
+    background-color: #abbb00!important;
+    border: none!important;
+}
+.btn-light:hover {
+    color: black!important;
+    background-color: white!important;
+}
+
+.bg-light{
+    background-color: transparent !important;
+}
+
+
+
+
+
+.job-card {
+    position: relative;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.job-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+.save-icon {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s; 
+}
+
+.save-icon.saved { 
+    color: #007bff; 
+}
+
+
+.job-card .save-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.job-card .save-icon:hover {
+    color: #0056b3;
+}
+
+.job-card .job-info {
+    padding: 20px;
+    background: #f7f9fc;
+    border-top: 1px solid #e0e0e0;
+    border-radius: 5px;
+}
+
+
+.job-card .job-info p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+
+.job-card .job-info .location,
+.job-card .job-info .type,
+.job-card .job-info .salary {
+    margin-bottom: 8px;
+}
+
+
+.job-card .job-info i {
+    margin-right: 8px;
+    color: #007bff;
+}
+
+
+.card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+
+.btn-primary {
+    display: block;
+    width: calc(100% - 20px);
+    margin: 10px auto; 
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 0; 
+    color: #fff;
+    font-size: 1rem; 
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); 
+}
+
+
+body {
+    background-color: #f0f2f5; }
+
+
+    .footer-links a {
+        color: #f8f9fa;
+        text-decoration: none;
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        transition: color 0.3s, background-color 0.3s; 
+    }
+    
+    .footer-links a i {
+        margin-right: 8px;
+    }
+    
+    .footer-links a:hover {
+        text-decoration: underline;
+        color: #ffc107;
+        background-color: rgba(255, 255, 255, 0.1); 
+        padding: 5px;
+        border-radius: 5px;
+    }
+    
+    footer {
+        background: #343a40;
+        color: #fff;
+        padding: 40px 0;
+    }
+    
+    .footer-links h5 {
+        margin-bottom: 20px;
+        font-size: 1.25rem;
+        color: #ffc107; 
+    }
+    
+    .footer-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 15px; 
+    }
+    
+    .container {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    
+    @media (max-width: 768px) {
+        .footer-links {
+            text-align: center;
+        }
+        .footer-links a {
+            display: block;
+            margin-bottom: 10px;
+        }
+    }

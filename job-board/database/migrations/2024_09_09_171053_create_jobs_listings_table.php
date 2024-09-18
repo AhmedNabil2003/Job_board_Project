@@ -13,13 +13,14 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Foreign key to users table
             $table->string('title');
             $table->text('description');
-            $table->text('requirements')->nullable();
+            $table->string('requirements')->nullable();
             $table->string('location');
             $table->string('job_type');
             $table->decimal('salary_min', 10, 2)->nullable();
             $table->decimal('salary_max', 10, 2)->nullable();
             $table->date('application_deadline')->nullable();
-            $table->string('status')->default('active'); // Ensure 'status' is defined as a string
+            $table->string('status')->default('Closed'); // Ensure 'status' is defined as a string
+            $table->boolean('is_pending_approval')->default(true);
             $table->foreignId('category_id')->constrained()->onDelete('cascade'); // Foreign key to categories table
             $table->timestamps(); // Created at and updated at timestamps
         });

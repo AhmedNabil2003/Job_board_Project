@@ -9,22 +9,18 @@ class Application extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'user_id', 'job_listing_id', 'cover_letter', 'status'
-    ];
+    protected $table = 'job_applications'; 
 
-    // Define allowed statuses as constants
-    const STATUS_PENDING = 'pending';
-    const STATUS_ACCEPTED = 'accepted';
-    const STATUS_REJECTED = 'rejected';
+    protected $fillable = ['user_id', 'job_id', 'email', 'phone', 'resume'];
 
-    // Validate status value
-    public function setStatusAttribute($value)
+
+    public function job()
     {
-        $allowedStatuses = [self::STATUS_PENDING, self::STATUS_ACCEPTED, self::STATUS_REJECTED];
-        if (!in_array($value, $allowedStatuses)) {
-            throw new \InvalidArgumentException("Invalid status value");
-        }
-        $this->attributes['status'] = $value;
+        return $this->belongsTo(JobListing::class, 'job_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

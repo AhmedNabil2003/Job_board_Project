@@ -31,14 +31,21 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class);
     }
+    
+    public function savedJobs()
+    {
+        return $this->belongsToMany(JobListing::class, 'saved_jobs', 'user_id', 'job_id');
+    }
+    public function jobs()
+    {
+    return $this->hasMany(JobListing::class, 'user_id');
+    }
+    
     public function applications()
     {
-        return $this->hasMany(Application::class);
+    return $this->hasMany(Application::class, 'user_id');
     }
-
-    public function notifications()
-    {
-        return $this->hasMany(Notification::class);
-    }
+   
+   
 }
 

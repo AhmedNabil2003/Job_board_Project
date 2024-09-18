@@ -12,14 +12,14 @@ $(document).ready(function() {
 
         if (!validRoles.includes(role)) {
             alert('Please select a valid role.');
-            event.preventDefault(); // Prevent form submission
+            event.preventDefault(); 
         }
         
         let password = $('#password').val();
         let passwordConfirm = $('#password_confirmation').val();
 
         if (password !== passwordConfirm) {
-            event.preventDefault(); // Prevent form submission
+            event.preventDefault(); 
             alert('Passwords do not match.');
         }
     });

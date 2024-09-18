@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class JobListing extends Model
 {
@@ -12,12 +13,22 @@ class JobListing extends Model
     protected $table = 'jobs_listings';
 
     protected $fillable = [
-        'user_id', 'title', 'description', 'requirements', 'location', 'job_type', 'salary_min', 'salary_max', 'application_deadline', 'status', 'category_id'
+        'user_id', 'title', 'description',  'requirements', 'location', 'job_type', 'salary_min', 'salary_max', 'application_deadline', 'status', 'category_id'
     ];
 
     // Define allowed statuses as constants
-    const STATUS_ACTIVE = 'active';
-    const STATUS_CLOSED = 'closed';
+    const STATUS_ACTIVE = 'Active';
+    const STATUS_CLOSED = 'Closed';
+
+    public function getApplicationDeadlineAttribute($value)
+    {
+        return Carbon::parse($value);
+    }
+    // Allowed statuses array
+    public static $allowedStatuses = [
+        self::STATUS_ACTIVE,
+        self::STATUS_CLOSED,
+    ];
 
     protected $casts = [
         'status' => 'string',
@@ -28,13 +39,25 @@ class JobListing extends Model
         'status' => self::STATUS_ACTIVE,
     ];
 
-    // Validate and set status
-    public function setStatusAttribute($value)
+    public function user()
     {
-        $allowedStatuses = [self::STATUS_ACTIVE, self::STATUS_CLOSED];
-        if (!in_array($value, $allowedStatuses)) {
-            throw new \InvalidArgumentException("Invalid status value");
-        }
-        $this->attributes['status'] = $value;
+        return $this->belongsTo(User::class);
     }
+    // Validate and set status
+   
+    // Optional: Add a helper function to get all allowed statuses
+    public static function getAllowedStatuses()
+    {
+        return self::$allowedStatuses;
+    }
+    public function savedByUsers()
+    {
+        return $this->belongsToMany(User::class, 'saved_jobs', 'job_id', 'user_id');
+    }
+
+    public function applications()
+{
+    return $this->hasMany(Application::class);
+}
+
 }

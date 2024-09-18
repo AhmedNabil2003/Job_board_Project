@@ -18,9 +18,12 @@ header {
     font-weight: bold;
     z-index: 1000;
     top: 0;
+    height: 50px;
     position: relative;
 }
-
+.navbar{
+    font-size: small;
+}
 .navbar-nav .nav-item + .nav-item {
     margin-left: 15px;
 }
@@ -53,6 +56,7 @@ header {
 .navbar-light .navbar-brand {
     color: rgb(255, 255, 255) !important;
     font-variant-caps: petite-caps;
+    margin-top: -20px;
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 .profile-icon {
@@ -65,15 +69,79 @@ header {
     color: #ffdd00 !important;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
 }
-
-.navbar-toggler {
-    border: none;
-    background-color: transparent;
+.navbar-brand img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+ 
+}
+.nav-link img{
+    border: 3px solid #fff;
 }
 .bg-light{
-    background-color: rgb(30, 30, 30)!important;
+    background-color: transparent !important;
+}.navbar-toggler {
+    border: none; 
+    background-color: transparent; 
+}
+.navbar-light .navbar-toggler {
+    color: rgba(255, 255, 255, 0.5); 
+    border: none !important;
+}
+.navbar-toggler:focus {
+    outline:none; 
+    box-shadow: none; 
+}
+.navbar-toggler:focus :hover{
+    outline-color:rgb(18, 83, 168);  ;
+}
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E")!important; 
 }
 
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background-color: #4b4a4a; 
+}
+
+.navbar-collapse {
+    text-transform: uppercase;
+    text-align: end;
+    
+}
+.nav-link img{
+    border: 3px solid #fff;
+}
+
+
+.profile-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.collapse.show {
+    transition: all 0.4s ease;
+    background-color: #23517b;
+}
+
+.separator {
+    margin: 0 10px; 
+    font-size: 15px;
+    color: #6c757d; 
+}
+.btn-lg {
+    margin-bottom: 100px!important;
+}
+.btn-light {
+    color: #ffffff!important;
+    background-color: #abbb00!important;
+    border: none!important;
+}
+.btn-light:hover {
+    color: black!important;
+    background-color: white!important;
+}
 .profile-section {
     margin-top: 30px;
 }
@@ -92,7 +160,6 @@ header {
     width: 150px;
     height: 150px;
     object-fit: cover;
-    margin-bottom: 15px;
     border: 3px solid #fff;
 }
 
