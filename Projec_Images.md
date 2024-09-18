@@ -63,6 +63,11 @@ page apply-job
 
 ![apply](https://github.com/user-attachments/assets/b7cf7a15-5d91-46c3-a2f9-12df48b16154)
 
+page dashboard Admin 
+
+
+![admin-dashboard](https://github.com/user-attachments/assets/dbd1c16c-5eb1-42d3-a6aa-dabbdee1edb1)
+
 page admin-sttings && (logo & name_site)
 
 
