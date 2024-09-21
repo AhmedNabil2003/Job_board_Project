@@ -28,62 +28,62 @@ edit profile page
 
 ![profile edit](https://github.com/user-attachments/assets/fedceb58-3f0e-4936-a6a1-5bee4da55647)
 
-page emplores-show-applicayions
+emplores-show-applicayions page
 
 
 ![employers-show-application](https://github.com/user-attachments/assets/77d2bb75-7c74-46f9-a586-c2f581be89ec)
 
-page manage-jobs
+manage-jobs page
 
 
 ![employers-manage-jobs](https://github.com/user-attachments/assets/10474a6a-eab9-4019-b1dd-ae47bbd501df)
 
-page dashboard-employer
+dashboard-employer page
 
 
 ![employers-dashboard](https://github.com/user-attachments/assets/eddb5cc2-a7d1-4d2e-8f4c-3458ee1c5fec)
 
-page employers create-jobs 
+employers create-jobs page
 
 
 ![employers-create-jobs](https://github.com/user-attachments/assets/d251d351-03c4-4599-bced-e5b7de41167e)
 
-page detils-jobs
+detils-jobs page
 
 
 ![detils-jobs](https://github.com/user-attachments/assets/9714817e-c00c-4fdf-91f9-73eaa253c128)
 
-page saved_jobs candidates
+saved_jobs candidates page
 
 
 ![candidates](https://github.com/user-attachments/assets/7c02c776-9a50-4057-ac77-6189a47304f6)
 
-page apply-job
+apply-job page
 
 
 ![apply](https://github.com/user-attachments/assets/b7cf7a15-5d91-46c3-a2f9-12df48b16154)
 
-page dashboard Admin 
+dashboard Admin page
 
 
 ![admin-dashboard](https://github.com/user-attachments/assets/dbd1c16c-5eb1-42d3-a6aa-dabbdee1edb1)
 
-page admin-settings && (logo & name_site)
+admin-settings && (logo & name_site) page
 
 
 ![admin-settings](https://github.com/user-attachments/assets/e55cad24-c751-4e2f-9b3a-6492d52183a5)
 
-page admin-manage-users
+admin-manage-users page
 
 
 ![admin-manage-users](https://github.com/user-attachments/assets/d757d492-1c08-45bd-a713-0051edd448ed)
 
-page job-apply & role 
+job-apply & role page
 
 
 ![admin-manage-jobs](https://github.com/user-attachments/assets/1d2384e3-69a3-4e49-b6f2-55bc76eede38)
 
-page add categories
+add categories page
 
 
 ![admin-manage-categories](https://github.com/user-attachments/assets/b327456d-64fe-4b1f-94c0-b28b947c8e69)
