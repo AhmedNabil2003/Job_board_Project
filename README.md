@@ -73,12 +73,12 @@ admin-settings && (logo & name_site) page
 
 ![admin-settings](https://github.com/user-attachments/assets/e55cad24-c751-4e2f-9b3a-6492d52183a5)
 
-admin-manage-users page
+admin-manage-users & role page
 
 
 ![admin-manage-users](https://github.com/user-attachments/assets/d757d492-1c08-45bd-a713-0051edd448ed)
 
-job-apply & role page
+job-apply page
 
 
 ![admin-manage-jobs](https://github.com/user-attachments/assets/1d2384e3-69a3-4e49-b6f2-55bc76eede38)
