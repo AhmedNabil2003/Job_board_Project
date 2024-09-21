@@ -53,7 +53,7 @@ page detils-jobs
 
 ![detils-jobs](https://github.com/user-attachments/assets/9714817e-c00c-4fdf-91f9-73eaa253c128)
 
-page candidates
+page saved_jobs candidates
 
 
 ![candidates](https://github.com/user-attachments/assets/7c02c776-9a50-4057-ac77-6189a47304f6)
@@ -68,7 +68,7 @@ page dashboard Admin
 
 ![admin-dashboard](https://github.com/user-attachments/assets/dbd1c16c-5eb1-42d3-a6aa-dabbdee1edb1)
 
-page admin-sttings && (logo & name_site)
+page admin-settings && (logo & name_site)
 
 
 ![admin-settings](https://github.com/user-attachments/assets/e55cad24-c751-4e2f-9b3a-6492d52183a5)
